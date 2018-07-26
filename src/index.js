@@ -45,8 +45,14 @@ function sumWithDefaults(a, b = 100) {
    returnFnResult(() => 'привет') вернет 'привет'
  */
 function returnFnResult(fn) {
-    return fn
+    var callFunction = fn();
+
+    return callFunction
 }
+
+returnFnResult(function() {
+   return console.log('О МАЙ ГОД МНУ ВЫЗВАЛИ!!!')
+});
 
 /*
  Задание 4:
@@ -61,8 +67,13 @@ function returnFnResult(fn) {
    console.log(f()); // выведет 12
    console.log(f()); // выведет 13
  */
-function returnCounter(number) {
-    return ++number;
+function returnCounter(number = 0) {
+    var number;
+
+   return function F() {
+        return ++number;
+    }
+    
 }
 
 /*

@@ -51,7 +51,9 @@ function returnFnResult(fn) {
 }
 
 returnFnResult(function() {
-   return console.log('О МАЙ ГОД МНУ ВЫЗВАЛИ!!!')
+    var result = 'О МАЙ ГОД МНУ ВЫЗВАЛИ!!!';
+
+    return result
 });
 
 /*
@@ -68,9 +70,8 @@ returnFnResult(function() {
    console.log(f()); // выведет 13
  */
 function returnCounter(number = 0) {
-    var number;
 
-   return function F() {
+    return function F() {
         return ++number;
     }
     
@@ -111,7 +112,18 @@ function returnArgumentsArray() {
    console.log(newSum()) выведет 6
  */
 function bindFunction(fn) {
+    return function() {
+    
+    };
 }
+
+function sum(a, b) {
+  return a + b;
+}
+
+var newSum = bindFunction(sum, 2, 6);
+
+console.log(newSum())
 
 export {
     returnFirstArgument,

@@ -1,5 +1,12 @@
 # elite-training-js
-Глубокий разбор JS
+
+### Branch
+
+| Name | git cmd |
+| ------ | ------ |
+| Task Week 1 | ```sh $ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-1 ``` |
+
+### Глубокий разбор JS
 
 - Современный стандарт языка. Использование возможностей современного EcmaScript.
 

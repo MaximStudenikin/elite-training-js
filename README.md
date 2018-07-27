@@ -1,4 +1,4 @@
-# elite-training-js
+# Elite Training JS
 
 ### Branch
 

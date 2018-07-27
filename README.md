@@ -4,7 +4,7 @@
 
 | Name | git cmd |
 | ------ | ------ |
-| Task Week 1 | ```sh $ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-1 ``` |
+| Task Week 1 | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-1 ``` |
 
 ### Глубокий разбор JS
 

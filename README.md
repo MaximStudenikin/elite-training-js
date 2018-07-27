@@ -28,7 +28,7 @@
  <dd>Задание повышенной сложности</dd>
  </dl>
  
-## Info repo
+## Info
 
 **Clone this repo**<br>
 
@@ -36,7 +36,7 @@
 
 [Back to Master Branch](https://github.com/MaximStudenikin/elite-training-js/tree/master)
 
-### Доступные команды
+### NPM cmd
 
 ```
 $ npm install // установить зависимости

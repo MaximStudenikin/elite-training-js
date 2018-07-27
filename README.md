@@ -27,7 +27,13 @@
  <dt>(*)</dt> 
  <dd>Задание повышенной сложности</dd>
  </dl>
+ 
+##Menu repo
 
+Clone this repo<br>
+```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-1```
+
+[Back to Master Branch](https://github.com/MaximStudenikin/elite-training-js/tree/master)
 
 ### Доступные команды
 

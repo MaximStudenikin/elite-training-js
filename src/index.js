@@ -52,11 +52,13 @@ function reduce(array, fn, initial) {
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
 function upperProps(obj) {
-  var keys = Object.getOwnPropertyNames(obj),
-      upperStr = keys.join(',').toUpperCase(),
-      upperArray = upperStr.split(',');
+  var keys, upperStr, upperArray;
 
-  return upperArray
+  keys = Object.getOwnPropertyNames(obj)
+  upperStr = keys.join(',').toUpperCase()
+  upperArray = upperStr.split(',')
+
+  return upperArray;
 }
 
 /*
@@ -65,9 +67,43 @@ function upperProps(obj) {
  Напишите аналог встроенного метода slice для работы с массивами
  Посмотрите как работает slice и повторите это поведение для массива, который будет передан в параметре array
  */
-function slice(array, from, to) {
-}
+function slice(array, from = 0, to) {
+  var 
+    index,
+    upTo, 
+    clonedArray = [],
+    sliceSize, 
+    arrayLength = array.length;
 
+  if(to != undefined) {
+    to = to
+  } else {
+    to = array.length
+  }
+
+  upTo = (to) ? to : arrayLength;
+      
+  if (to < 0) {
+     upTo = arrayLength + to;
+    }
+
+    sliceSize = upTo - from;
+
+    if (sliceSize > 0) {
+      clonedArray = new Array(sliceSize);
+      if (array.charAt) {
+        for (index = 0; index < sliceSize; index++) {
+          clonedArray[index] = array.charAt(from + index);
+        }
+      } else {
+        for (index = 0; index < sliceSize; index++) {
+          clonedArray[index] = array[from + index];
+        }
+      }
+    }
+
+    return clonedArray;
+}
 /*
  Задание 6 *:
 
@@ -75,6 +111,15 @@ function slice(array, from, to) {
  Proxy должен перехватывать все попытки записи значений свойств и возводить это значение в квадрат
  */
 function createProxy(obj) {
+  
+  return new Proxy(obj, {
+    set(target, prop, value) {
+
+      target[prop] = value * value;
+
+      return target[prop];
+    }
+  });
 }
 
 export {

@@ -7,9 +7,9 @@
  Посмотрите как работает forEach и повторите это поведение для массива, который будет передан в параметре array
  */
 function forEach(array, fn) {
-  for(var index = 0;index < array.lenght;index++) {
-    fn(array[index], index, array);
-  }
+    for (var index = 0; index < array.length; index++) {
+        fn.call(array[index], index, array);
+    }
 }
 /*
  Задание 2:
@@ -18,13 +18,13 @@ function forEach(array, fn) {
  Посмотрите как работает map и повторите это поведение для массива, который будет передан в параметре array
  */
 function map(array, fn) {
-  var arrayMap = [];
+    var arrayMap = [];
 
-  for(var index = 0;index < array.lenght;index++) {
-    arrayMap.push(fn(array[index], index, array));
-  }
+    for (var index = 0; index < array.length; index++) {
+        arrayMap.push(fn.call(arguments, array[index], index, array));
+    }
 
-  return arrayMap;
+    return arrayMap;
 }
 
 /*
@@ -34,14 +34,14 @@ function map(array, fn) {
  Посмотрите как работает reduce и повторите это поведение для массива, который будет передан в параметре array
  */
 function reduce(array, fn, initial) {
-  var result = initial;
+    var result = initial;
 
-  for(var index = 0;index<array.lenght;) {
-    result = fn(null, initial, array[i], index, array);
-  }
+    for (var index = 0; index < array.length; index++) {
+        result = fn.call(null, array[index], result, index, array);
+    }
 
-  return result;
-};
+    return result;
+}
 
 /*
  Задание 4:
@@ -52,13 +52,13 @@ function reduce(array, fn, initial) {
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
 function upperProps(obj) {
-  var keys, upperStr, upperArray;
+    var keys, upperStr, upperArray;
 
-  keys = Object.getOwnPropertyNames(obj)
-  upperStr = keys.join(',').toUpperCase()
-  upperArray = upperStr.split(',')
+    keys = Object.getOwnPropertyNames(obj)
+    upperStr = keys.join(',').toUpperCase()
+    upperArray = upperStr.split(',')
 
-  return upperArray;
+    return upperArray;
 }
 
 /*
@@ -68,38 +68,36 @@ function upperProps(obj) {
  Посмотрите как работает slice и повторите это поведение для массива, который будет передан в параметре array
  */
 function slice(array, from = 0, to) {
-  var 
-    index,
-    upTo, 
-    clonedArray = [],
-    sliceSize, 
-    arrayLength = array.length;
+    var
+        index,
+        upTo,
+        clonedArray = [],
+        sliceSize,
+        arrayLength = array.length;
 
-  if(to != undefined) {
-    to = to
-  } else {
-    to = array.length
-  }
+    if (to == undefined) {
+        to = array.length
+    }
 
-  upTo = (to) ? to : arrayLength;
-      
-  if (to < 0) {
-     upTo = arrayLength + to;
+    upTo = (to) ? to : arrayLength;
+
+    if (to < 0) {
+        upTo = arrayLength + to;
     }
 
     sliceSize = upTo - from;
 
     if (sliceSize > 0) {
-      clonedArray = new Array(sliceSize);
-      if (array.charAt) {
-        for (index = 0; index < sliceSize; index++) {
-          clonedArray[index] = array.charAt(from + index);
+        clonedArray = new Array(sliceSize);
+        if (array.charAt) {
+            for (index = 0; index < sliceSize; index++) {
+                clonedArray[index] = array.charAt(from + index);
+            }
+        } else {
+            for (index = 0; index < sliceSize; index++) {
+                clonedArray[index] = array[from + index];
+            }
         }
-      } else {
-        for (index = 0; index < sliceSize; index++) {
-          clonedArray[index] = array[from + index];
-        }
-      }
     }
 
     return clonedArray;
@@ -111,15 +109,15 @@ function slice(array, from = 0, to) {
  Proxy должен перехватывать все попытки записи значений свойств и возводить это значение в квадрат
  */
 function createProxy(obj) {
-  
-  return new Proxy(obj, {
-    set(target, prop, value) {
 
-      target[prop] = value * value;
+    return new Proxy(obj, {
+        set(target, prop, value) {
 
-      return target[prop];
-    }
-  });
+            target[prop] = value * value;
+
+            return target[prop];
+        }
+    });
 }
 
 export {

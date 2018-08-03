@@ -52,8 +52,8 @@ function reduce(array, fn, initial) {
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
 function upperProps(obj) {
-  var keys = Object.getOwnPropertyNames(obj),
-      upperStr = keys.join(',').toUpperCase(),
+  var keysArray = Object.getOwnPropertyNames(obj),
+      upperStr = keysArray.join(',').toUpperCase(),
       upperArray = upperStr.split(',');
 
   return upperArray
@@ -66,6 +66,9 @@ function upperProps(obj) {
  Посмотрите как работает slice и повторите это поведение для массива, который будет передан в параметре array
  */
 function slice(array, from, to) {
+  for (var index = 0;index< array.lenght;index++) {
+    
+  }
 }
 
 /*

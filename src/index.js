@@ -52,13 +52,7 @@ function reduce(array, fn, initial) {
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
 function upperProps(obj) {
-<<<<<<< HEAD
-  var keysArray = Object.getOwnPropertyNames(obj),
-      upperStr = keysArray.join(',').toUpperCase(),
-      upperArray = upperStr.split(',');
-=======
   var keys, upperStr, upperArray;
->>>>>>> dfee878625a30499f0607683d63b2dad6a1bc383
 
   keys = Object.getOwnPropertyNames(obj)
   upperStr = keys.join(',').toUpperCase()
@@ -73,13 +67,6 @@ function upperProps(obj) {
  Напишите аналог встроенного метода slice для работы с массивами
  Посмотрите как работает slice и повторите это поведение для массива, который будет передан в параметре array
  */
-<<<<<<< HEAD
-function slice(array, from, to) {
-  for (var index = 0;index< array.lenght;index++) {
-    
-  }
-}
-=======
 function slice(array, from = 0, to) {
   var 
     index,
@@ -93,7 +80,6 @@ function slice(array, from = 0, to) {
   } else {
     to = array.length
   }
->>>>>>> dfee878625a30499f0607683d63b2dad6a1bc383
 
   upTo = (to) ? to : arrayLength;
       

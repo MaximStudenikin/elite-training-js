@@ -128,8 +128,60 @@ function returnBadArguments(fn) {
    - number не является числом (с текстом "number is not a number")
    - какой-либо из аргументов div является нулем (с текстом "division by 0")
  */
-function calculator() {
+function calculator(number = 0) {
+    var
+        thisArguments = [...arguments];
+
+    try {
+        if (isNaN(number)) {
+            throw new Error("number is not a number");
+        }
+
+        for (let index = 0; index < thisArguments.length; index++) {
+            if (thisArguments[index] === 0) {
+                throw new Error("division by 0");
+            }
+        }
+
+    } catch (e) {
+        console.error(e.message);
+    }
+
+    function reduce(array, callFuntion, initial) {
+        var result = initial;
+
+        for (let index = 0; index < array.length; index++) {
+            result = callFuntion.call(null, array[index], result, index, array);
+        }
+
+        return result;
+    }
+
+
+    var thisObject = {
+        'sum': reduce(thisArguments, function (element) {
+            return number + element;
+        }, ''),
+
+        'dif': reduce(thisArguments, function (element) {
+            return number - element
+        }, ''),
+
+        'div': reduce(thisArguments, function (element) {
+            return number / element
+        }, ''),
+
+        'mul': reduce(thisArguments, function (element) {
+            return number * element
+        }, '')
+    }
+
+    return thisObject;
 }
+
+var result = calculator(5,5)
+
+console.log(result)
 
 /* При решении задач, пострайтесь использовать отладчик */
 

@@ -22,7 +22,7 @@ function filter(array, fn) {
             throw new Error('empty array');
         }
 
-        if (typeof callFunction === 'function') {
+        if (typeof fn !== 'function') {
             throw new Error('fn is not a function');
         }
 
@@ -89,6 +89,26 @@ function isSomeTrue(array, fn) {
    - fn не является функцией (с текстом "fn is not a function")
  */
 function returnBadArguments(fn) {
+    var thisArguments, falseArgumentsArray;
+
+    thisArguments = [...arguments];
+    falseArgumentsArray = [];
+
+    for (var index = 1; index < thisArguments.length; index++) {
+        try {
+            if (typeof fn !== 'function') {
+                throw new Error('fn is not a function');
+            }
+
+            fn(thisArguments[index]);
+
+        } catch (e) {
+            falseArgumentsArray.push(thisArguments[index])
+            console.error(e.message);
+        }
+    }
+
+    return falseArgumentsArray;
 }
 
 /*

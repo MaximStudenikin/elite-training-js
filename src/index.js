@@ -19,11 +19,11 @@
 function filter(array, fn) {
     try {
         if (array === Array || array.length < 1) {
-            throw new Error( 'empty array' );
+            throw new Error('empty array');
         }
 
         if (typeof callFunction === 'function') {
-            throw new Error( 'fn is not a function' );
+            throw new Error('fn is not a function');
         }
 
     } catch (e) {
@@ -38,16 +38,13 @@ function isAllTrue(array, fn) {
 
     for (var index = 0; index < array.length; index++) {
         var isTrue = array[index];
+
+        if (!isTrue) {
+            return false;
+        }
     }
 
-    if (isTrue) {
-        return true;
-
-    } else {
-
-        return false;
-    }
-
+    return true;
 }
 
 /*
@@ -67,6 +64,17 @@ function isAllTrue(array, fn) {
    isSomeTrue([1, 2, 3, 4, 5], n => n > 20) // вернет false
  */
 function isSomeTrue(array, fn) {
+    filter(array, fn)
+
+    for (var index = 0; index < array.length; index++) {
+        var isTrue = array[index];
+
+        if (isTrue) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 /*

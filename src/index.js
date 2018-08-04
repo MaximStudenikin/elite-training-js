@@ -16,7 +16,38 @@
    isAllTrue([1, 2, 3, 4, 5], n => n < 10) // вернет true
    isAllTrue([100, 2, 3, 4, 5], n => n < 10) // вернет false
  */
+function filter(array, fn) {
+    try {
+        if (array === Array || array.length < 1) {
+            throw new Error( 'empty array' );
+        }
+
+        if (typeof callFunction === 'function') {
+            throw new Error( 'fn is not a function' );
+        }
+
+    } catch (e) {
+        console.error(e.message);
+    }
+
+}
+
 function isAllTrue(array, fn) {
+
+    filter(array, fn)
+
+    for (var index = 0; index < array.length; index++) {
+        var isTrue = array[index];
+    }
+
+    if (isTrue) {
+        return true;
+
+    } else {
+
+        return false;
+    }
+
 }
 
 /*

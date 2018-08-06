@@ -16,24 +16,20 @@
    isAllTrue([1, 2, 3, 4, 5], n => n < 10) // вернет true
    isAllTrue([100, 2, 3, 4, 5], n => n < 10) // вернет false
  */
-function filter(array, fn) {
-
-    if (array === Array || array.length < 1) {
-        throw new Error('empty array');
-    }
+function isAllTrue(array, fn) {
+    var arrayLength = array.length;
 
     if (typeof fn !== 'function') {
         throw new Error('fn is not a function');
     }
-}
 
-function isAllTrue(array, fn) {
-    filter(array, fn);
+    if (!(array instanceof Array) || arrayLength === 0) {
+        throw new Error('empty array');
+    }
 
-    for (var index = 0; index < array.length; index++) {
-        var isTrue = fn.call(arguments, array[index], index, array);
+    for (var index = 0; index < arrayLength; index++) {
 
-        if (!isTrue) {
+        if (!fn(array[index])) {
             return false;
         }
     }
@@ -41,13 +37,6 @@ function isAllTrue(array, fn) {
     return true;
 }
 
-var eris = ['adad','dasdas','dasdas'];
-
-var result = isAllTrue(eris, function(word){
-   return word.toLowerCase() == word;
-})
-
-console.log(result);
 /*
  Задание 2:
  
@@ -65,12 +54,19 @@ console.log(result);
    isSomeTrue([1, 2, 3, 4, 5], n => n > 20) // вернет false
  */
 function isSomeTrue(array, fn) {
-    filter(array, fn)
+    var arrayLength = array.length;
+
+    if (!(array instanceof Array) || arrayLength === 0) {
+        throw new Error('empty array');
+    }
+
+    if (typeof fn !== 'function') {
+        throw new Error('fn is not a function');
+    }
 
     for (var index = 0; index < array.length; index++) {
-        var isTrue = fn.call(arguments, array[index], index, array);
 
-        if (isTrue) {
+        if (fn(array[index])) {
             return true;
         }
     }
@@ -95,22 +91,22 @@ function returnBadArguments(fn) {
     thisArguments = [...arguments];
     falseArgumentsArray = [];
 
+    if (typeof fn !== 'function') {
+        throw new Error('fn is not a function');
+    }
+
     for (var index = 1; index < thisArguments.length; index++) {
         try {
-            if (typeof fn !== 'function') {
-                throw new Error('fn is not a function');
+            if (fn(thisArguments[index])) {
+                throw new Error()
             }
-
-            fn(thisArguments[index]);
-
         } catch (e) {
-            falseArgumentsArray.push(thisArguments[index])
+            falseArgumentsArray.push(thisArguments[index]);
         }
     }
 
-    return falseArgumentsArray;
+    return falseArgumentsArray
 }
-
 /*
  Задание 4:
  
@@ -129,44 +125,54 @@ function returnBadArguments(fn) {
    - какой-либо из аргументов div является нулем (с текстом "division by 0")
  */
 function calculator(number = 0) {
-    var
-        thisArguments = [...arguments];
+    var iiii = number;
+    var sdadasd = [...arguments]
 
-    if (isNaN(number)) {
+    if (isNaN(iiii)) {
         throw new Error('number is not a number');
     }
 
-    function reduce(array, callFuntion, initial) {
-        var result = initial;
-
-        for (let index = 0; index < array.length; index++) {
-            result = callFuntion.call(null, array[index], result, index, array);
-        }
-
-        return result;
-    }
-
-    var thisObject = {
-        sum: reduce(thisArguments, function (thisArgumentsArray) {
-            return number + thisArgumentsArray;
-        }, ''),
-        dif: reduce(thisArguments, function (thisArgumentsArray) {
-            return number - thisArgumentsArray
-        }, ''),
-        div: reduce(thisArguments, function (thisArgumentsArray, index) {
-            if (thisArguments[index] === 0) {
-                throw new Error('division by 0');
+    var returnObject = {
+        'sum': function () {
+            for (var index = 0; index < sdadasd.length; index++) {
+               number = arguments[0] + sdadasd[index];
             }
 
-            return number / thisArgumentsArray
-        }, ''),
-        mul: reduce(thisArguments, function (thisArgumentsArray) {
-            return number * thisArgumentsArray
-        }, '')
+            return number;
+        },
+        'dif': function () {
+            for (var index = 1; index < arguments.length; index++) {
+                number = number - arguments[index]
+            }
+
+            return number
+        },
+        'div': function () {
+            for (var index = 1; index < arguments.length; index++) {
+                if (arguments[index] === 0) {
+                    throw new Error('division by 0');
+                } else {
+                    number = number / arguments[index]
+                }
+            }
+
+            return number
+        },
+        'mul': function () {
+            for (var index = 1; index < arguments.length; index++) {
+                number = number * arguments[index]
+            }
+
+            return number
+        }
     }
 
-    return thisObject;
+    return returnObject.sum();
 }
+
+var res = calculator(5)
+
+console.log(res)
 
 /* При решении задач, пострайтесь использовать отладчик */
 

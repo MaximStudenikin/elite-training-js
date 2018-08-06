@@ -28,10 +28,10 @@ function filter(array, fn) {
 }
 
 function isAllTrue(array, fn) {
-    filter(array, fn)
+    filter(array, fn);
 
     for (var index = 0; index < array.length; index++) {
-        var isTrue = array[index];
+        var isTrue = fn.call(arguments, array[index], index, array);
 
         if (!isTrue) {
             return false;
@@ -41,6 +41,13 @@ function isAllTrue(array, fn) {
     return true;
 }
 
+var eris = ['adad','dasdas','dasdas'];
+
+var result = isAllTrue(eris, function(word){
+   return word.toLowerCase() == word;
+})
+
+console.log(result);
 /*
  Задание 2:
  
@@ -61,7 +68,7 @@ function isSomeTrue(array, fn) {
     filter(array, fn)
 
     for (var index = 0; index < array.length; index++) {
-        var isTrue = array[index];
+        var isTrue = fn.call(arguments, array[index], index, array);
 
         if (isTrue) {
             return true;

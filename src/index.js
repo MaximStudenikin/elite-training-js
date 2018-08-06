@@ -125,54 +125,52 @@ function returnBadArguments(fn) {
    - какой-либо из аргументов div является нулем (с текстом "division by 0")
  */
 function calculator(number = 0) {
-    var iiii = number;
-    var sdadasd = [...arguments]
+    var sumNumber = number;
+    var difNumber = number;
+    var divNumber = number;
+    var mulNumber = number;
 
-    if (isNaN(iiii)) {
+    if (isNaN(number)) {
         throw new Error('number is not a number');
     }
 
     var returnObject = {
         'sum': function () {
-            for (var index = 0; index < sdadasd.length; index++) {
-               number = arguments[0] + sdadasd[index];
+            for (var index = 0; index < arguments.length; index++) {
+                sumNumber = sumNumber + arguments[index];
             }
 
-            return number;
+            return sumNumber;
         },
         'dif': function () {
-            for (var index = 1; index < arguments.length; index++) {
-                number = number - arguments[index]
+            for (var index = 0; index < arguments.length; index++) {
+                difNumber = difNumber - arguments[index]
             }
 
-            return number
+            return difNumber
         },
         'div': function () {
-            for (var index = 1; index < arguments.length; index++) {
+            for (var index = 0; index < arguments.length; index++) {
                 if (arguments[index] === 0) {
                     throw new Error('division by 0');
                 } else {
-                    number = number / arguments[index]
+                    divNumber = divNumber / arguments[index]
                 }
             }
 
-            return number
+            return divNumber
         },
         'mul': function () {
-            for (var index = 1; index < arguments.length; index++) {
-                number = number * arguments[index]
+            for (var index = 0; index < arguments.length; index++) {
+                mulNumber = mulNumber * arguments[index]
             }
 
-            return number
+            return mulNumber
         }
     }
 
-    return returnObject.sum();
+    return returnObject;
 }
-
-var res = calculator(5)
-
-console.log(res)
 
 /* При решении задач, пострайтесь использовать отладчик */
 

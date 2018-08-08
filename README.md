@@ -33,3 +33,4 @@ $ npm run build // собрать проект в папку 'build'
 | [Task 1](https://github.com/MaximStudenikin/elite-training-js/tree/task-1) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-1 ``` |
 | [Task 2](https://github.com/MaximStudenikin/elite-training-js/tree/task-2) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-2 ``` |
 | [Task 3](https://github.com/MaximStudenikin/elite-training-js/tree/task-3) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-3 ``` |
+| [Task 4](https://github.com/MaximStudenikin/elite-training-js/tree/task-4) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-4 ``` |

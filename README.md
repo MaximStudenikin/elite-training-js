@@ -1,22 +1,57 @@
-# Глубокий разбор JS
+# Task Week 5
 
-- Современный стандарт языка. Использование возможностей современного EcmaScript.
+ * Задание 1:<br>
 
-- Функции, замыкание, всплытие, объекты, контекст и многое другое.
+ Функция должна добавлять обработчик fn события eventName к элементу target
+ 
+ * Задание 2:<br>
 
-- Асинхронность. Организация кода при помощи Promise.
+ Функция должна удалять у элемента target обработчик fn события eventName
+ 
+ * Задание 3:<br>
 
-- Взаимодействие с сервером. XMLHttpRequest, Fetch, Websocket.
+ Функция должна добавить к элементу target такой обработчик на события eventName, чтобы он отменял действия по умолчанию
+ 
+ * Задание 4:<br>
 
-- Работа с DOM. Создание интерактивных приложений.
+ Функция должна эмулировать событие click для элемента target
+ * Задание 5:<br>
 
-- MV*. Паттерн для Построения расширяемых приложений.
+ Функция должна добавить такой обработчик кликов к элементу target,
+ который реагирует (вызывает fn) только на клики по элементам BUTTON внутри target
+ 
+ * Задание 6:<br>
 
-- ООП в JavaScript. Классы и прототипное наследование.
+ Функция должна добавить такой обработчик кликов к элементу target,
+ который сработает только один раз и удалится (перестанет срабатывать для последующих кликов по указанному элементу)
+ 
+ 
+## Задание повышенной сложности
 
-- Тестирование кода. Основы тестирования JS-кода.
+ Создайте страницу с кнопкой.
+ При нажатии на кнопку должен создаваться div со случайными размерами, цветом и позицией на экране
+ Необходимо предоставить возможность перетаскивать созданные div при помощи drag and drop
 
-## NPM cmd
+ Функция должна создавать и возвращать новый div с классом draggable-div и случайными размерами/цветом/позицией
+ Функция должна только создавать элемент и задвать ему случайные размер/позицию/цвет
+ Функция НЕ должна добавлять элемент на страницу. На страницу элемент добавляется отдельно
+
+ Функция должна добавлять обработчики событий для перетаскивания элемента при помощи drag and drop
+
+```
+Запрещено использовать сторонние библиотеки. Разрешено пользоваться только тем, что встроено в браузер
+```
+
+### Info
+
+**Clone this repo**<br>
+
+```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-5```
+
+[Back to Master Branch](https://github.com/MaximStudenikin/elite-training-js/tree/master)
+
+### NPM cmd
+
 ```
 $ npm install // установить зависимости
 $ npm run prepare // запустить тесты и проверить стиль кода
@@ -25,12 +60,3 @@ $ npm run codestyle // проверить стиль кода
 $ npm run start // запустить встроенный сервер и следить за изменениями файлов
 $ npm run build // собрать проект в папку 'build'
 ```
-
-### Branch
-
-| Name | git cmd |
-| ------ | ------ |
-| [Task 1](https://github.com/MaximStudenikin/elite-training-js/tree/task-1) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-1 ``` |
-| [Task 2](https://github.com/MaximStudenikin/elite-training-js/tree/task-2) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-2 ``` |
-| [Task 3](https://github.com/MaximStudenikin/elite-training-js/tree/task-3) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-3 ``` |
-| [Task 4](https://github.com/MaximStudenikin/elite-training-js/tree/task-4) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-4 ``` |

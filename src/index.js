@@ -115,10 +115,10 @@ function deleteTextNodes(where) {
     var childrens = where.childNodes;
 
     for (var index = 0; index < childrens.length; index++) {
-      if (childrens[index].nodeType == 3) {
-        where.removeChild(childrens[index])
-      }
-  }
+        if (childrens[index].nodeType == 3) {
+            where.removeChild(childrens[index])
+        }
+    }
 }
 
 /*

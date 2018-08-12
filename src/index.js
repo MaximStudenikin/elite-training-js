@@ -112,16 +112,13 @@ function findError(where) {
  */
 function deleteTextNodes(where) {
 
-    var elementChildren = where.childNodes;
+    var childrens = where.childNodes;
 
-    for (var index = 0; index < elementChildren.length; index++) {
-        if (elementChildren[index].nodeType == 3) {
-            elementChildren[index].remove(elementChildren[index]);
-
-        }
-
-    }
-}
+    for (var index = 0; index < childrens.length; index++) {
+      if (childrens[index].nodeType == 3) {
+        where.removeChild(childrens[index])
+      }
+  }
 
 /*
  Задание 6:

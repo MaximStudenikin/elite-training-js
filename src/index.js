@@ -116,22 +116,15 @@ function findError(where) {
  */
 function deleteTextNodes(where) {
 
-    var element = document.querySelector(`${where}`);
-
-    var elementChildren = element.childNodes;
-
-
+    var elementChildren = where.childNodes;
 
     for (var index = 0; index < elementChildren.length; index++) {
-
-        if (elementChildren[index].innerHTML) {
-
-            elementChildren[index].innerHTML = '';
+        if (elementChildren[index].nodeType == 3) {
+            elementChildren[index].parentNode.removeChild(elementChildren[index]);
 
         }
 
     }
-
 }
 
 /*

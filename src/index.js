@@ -6,7 +6,8 @@
  Функция должна добавлять обработчик fn события eventName к элементу target
 
  Пример:
-   addListener('click', document.querySelector('a'), () => console.log('...')) // должна добавить указанный обработчик кликов на указанный элемент
+   addListener('click', document.querySelector('a'), () => console.log('...')) 
+   // должна добавить указанный обработчик кликов на указанный элемент
  */
 function addListener(eventName, target, fn) {
     var element = document.querySelector(`${target}`);
@@ -20,7 +21,8 @@ function addListener(eventName, target, fn) {
  Функция должна удалять у элемента target обработчик fn события eventName
 
  Пример:
-   removeListener('click', document.querySelector('a'), someHandler) // должна удалить указанный обработчик кликов на указанный элемент
+   removeListener('click', document.querySelector('a'), someHandler) 
+   // должна удалить указанный обработчик кликов на указанный элемент
  */
 function removeListener(eventName, target, fn) {
     var element = document.querySelector(`${target}`);
@@ -31,10 +33,12 @@ function removeListener(eventName, target, fn) {
 /*
  Задание 3:
 
- Функция должна добавить к элементу target такой обработчик на события eventName, чтобы он отменял действия по умолчанию
+ Функция должна добавить к элементу target такой обработчик на события eventName, 
+ чтобы он отменял действия по умолчанию
 
  Пример:
-   skipDefault('click', document.querySelector('a')) // после вызова функции, клики на указанную ссылку не должны приводить к переходу на другую страницу
+   skipDefault('click', document.querySelector('a')) // после вызова функции, 
+   клики на указанную ссылку не должны приводить к переходу на другую страницу
  */
 function skipDefault(eventName, target) {
     var element = document.querySelector(`${target}`);
@@ -50,7 +54,8 @@ function skipDefault(eventName, target) {
  Функция должна эмулировать событие click для элемента target
 
  Пример:
-   emulateClick(document.querySelector('a')) // для указанного элемента должно быть сэмулировано события click
+   emulateClick(document.querySelector('a')) 
+   // для указанного элемента должно быть сэмулировано события click
  */
 function emulateClick(target) {
     var element, emulateCkick;
@@ -88,7 +93,8 @@ function delegate(target, fn) {
  который сработает только один раз и удалится (перестанет срабатывать для последующих кликов по указанному элементу)
 
  Пример:
-   once(document.querySelector('button'), () => console.log('обработчик выполнился!')) // добавит такой обработчик кликов для указанного элемента, 
+   once(document.querySelector('button'), () => console.log('обработчик выполнился!')) 
+   // добавит такой обработчик кликов для указанного элемента, 
    который вызовется только один раз и затем удалится
  */
 function once(target, fn) {

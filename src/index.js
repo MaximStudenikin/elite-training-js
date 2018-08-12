@@ -115,13 +115,23 @@ function findError(where) {
    должно быть преобразовано в <div></div><p></p>
  */
 function deleteTextNodes(where) {
-    var thisChildNodes = document.querySelector(`${where}`).childNodes;
-    
-    for (var index = 0; index < thisChildNodes.length; index++) {
-        if (thisChildren[index].nodeType === 3) {
-            thisChildNodes.removeChild(thisChildren[index]);
+
+    var element = document.querySelector(`${where}`);
+
+    var elementChildren = element.childNodes;
+
+
+
+    for (var index = 0; index < elementChildren.length; index++) {
+
+        if (elementChildren[index].innerHTML) {
+
+            elementChildren[index].innerHTML = '';
+
         }
+
     }
+
 }
 
 /*

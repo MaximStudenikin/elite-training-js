@@ -119,6 +119,7 @@ function deleteTextNodes(where) {
         where.removeChild(childrens[index])
       }
   }
+}
 
 /*
  Задание 6:

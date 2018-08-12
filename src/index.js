@@ -58,16 +58,12 @@ function prepend(what, where) {
    следующим соседом этих элементов является элемент с тегом P
  */
 function findAllPSiblings(where) {
-    var parentElement, thisChildren, nextElSibling;
-    var siblingArray = [];
-
-    parentElement = document.querySelector(`${where}`);
-    thisChildren = parentElement.children;
+    var thisChildren = where.children;
+    varsiblingArray = [];
 
     for (var index = 0; index < thisChildren.length; index++) {
-        nextElSibling = thisChildren[index].nextElementSibling;
 
-        if (nextElSibling && nextElSibling.tagName === 'P') {
+        if (thisChildren[index].nextElementSibling.tagName == 'P') {
             siblingArray.push(thisChildren[index])
         }
     }
@@ -120,7 +116,7 @@ function deleteTextNodes(where) {
 
     for (var index = 0; index < elementChildren.length; index++) {
         if (elementChildren[index].nodeType == 3) {
-            elementChildren[index].parentNode.removeChild(elementChildren[index]);
+            elementChildren[index].remove(elementChildren[index]);
 
         }
 
@@ -140,7 +136,7 @@ function deleteTextNodes(where) {
    должно быть преобразовано в <span><div><b></b></div><p></p></span>
  */
 function deleteTextNodesRecursive(where) {
-    var thisChildNodes = document.querySelector(`${where}`).childNodes;
+    var thisChildNodes = where.childNodes;
     var thisChildren;
 
     for (thisChildren of thisChildNodes) {

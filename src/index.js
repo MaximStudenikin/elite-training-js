@@ -10,9 +10,8 @@
    // должна добавить указанный обработчик кликов на указанный элемент
  */
 function addListener(eventName, target, fn) {
-    var element = document.querySelector(`${target}`);
 
-    return element.addEventListener(`${eventName}`, fn);
+    return target.addEventListener(eventName, fn);
 }
 
 /*
@@ -25,9 +24,8 @@ function addListener(eventName, target, fn) {
    // должна удалить указанный обработчик кликов на указанный элемент
  */
 function removeListener(eventName, target, fn) {
-    var element = document.querySelector(`${target}`);
 
-    return element.removeEventListener(`${eventName}`, fn);
+    return target.removeEventListener(eventName, fn);
 }
 
 /*
@@ -41,9 +39,8 @@ function removeListener(eventName, target, fn) {
    клики на указанную ссылку не должны приводить к переходу на другую страницу
  */
 function skipDefault(eventName, target) {
-    var element = document.querySelector(`${target}`);
 
-    return element.addEventListener(eventName, function (eventName) {
+    return target.addEventListener(eventName, function (eventName) {
         eventName.preventDefault();
     })
 }
@@ -58,12 +55,9 @@ function skipDefault(eventName, target) {
    // для указанного элемента должно быть сэмулировано события click
  */
 function emulateClick(target) {
-    var element, emulateCkick;
+    var emulateCkick = new Event('click', { bubbles: true, cancelable: true });
 
-    element = document.querySelector(`${target}`);
-    emulateCkick = new Event('click', { bubbles: true, cancelable: true });
-
-    return element.dispatchEvent(emulateCkick);
+    return target.dispatchEvent(emulateCkick);
 }
 
 /*
@@ -77,9 +71,7 @@ function emulateClick(target) {
    который будет вызывать указанную функцию только если кликнули на кнопку (элемент с тегом button)
  */
 function delegate(target, fn) {
-    var element = document.querySelector(`${target}`);
-
-    element.addEventListener('click', function (event) {
+    target.addEventListener('click', function (event) {
         if (event.target.tagName === 'BUTTON') {
             fn();
         }
@@ -98,14 +90,13 @@ function delegate(target, fn) {
    который вызовется только один раз и затем удалится
  */
 function once(target, fn) {
-    var element = document.querySelector(`${target}`);
 
     function onlyOnceHandler() {
         fn();
-        element.removeEventListener('click', onlyOnceHandler);
+        target.removeEventListener('click', onlyOnceHandler);
     }
   
-    element.addEventListener('click', onlyOnceHandler);
+    target.addEventListener('click', onlyOnceHandler);
 }
 
 export {

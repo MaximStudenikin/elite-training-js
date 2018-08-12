@@ -11,9 +11,9 @@
    createDivWithText('loftschool') // создаст элемент div, поместит в него 'loftschool' и вернет созданный элемент
  */
 function createDivWithText(text) {
-    var div = document.createElement('div');
+    var div = document.createElement('DIV');
 
-    div.textContent = `${text}`;
+    div.innerText = text
 
     return div;
 }
@@ -28,13 +28,7 @@ function createDivWithText(text) {
    добавит элемент переданный первым аргументом в начало элемента переданного вторым аргументом
  */
 function prepend(what, where) {
-    var prependElement, parentElement, addChildren;
-
-    prependElement = document.querySelector(`${what}`);
-    parentElement = document.querySelector(`${where}`);
-    addChildren = parentElement.children[0];
-
-    return parentElement.insertBefore(prependElement, addChildren);
+    return where.insertBefore(what, where.firstChild);
 }
 
 /*
@@ -59,11 +53,11 @@ function prepend(what, where) {
  */
 function findAllPSiblings(where) {
     var thisChildren = where.children;
-    varsiblingArray = [];
+    var siblingArray = [];
 
     for (var index = 0; index < thisChildren.length; index++) {
 
-        if (thisChildren[index].nextElementSibling.tagName == 'P') {
+        if (thisChildren[index].nextElementSibling && thisChildren[index].nextElementSibling.tagName === 'P') {
             siblingArray.push(thisChildren[index])
         }
     }

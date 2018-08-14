@@ -27,6 +27,28 @@ const homeworkContainer = document.querySelector('#homework-container');
    homeworkContainer.appendChild(newDiv);
  */
 function createDiv() {
+    var doc = document;
+    var div = doc.createElement('DIV');
+
+    function getRandomSize() {
+        return Math.random() * 200 + 'px';
+    }
+
+    function getRandomColor() {
+        var hex = Math.floor(Math.random() * 0xFFFFFF);
+
+        return "#" + ("000000" + hex.toString(16)).substr(-6);
+    }
+
+    div.classList.add('dnd');
+    div.style.position = 'fixed';
+    div.style.height = getRandomSize();
+    div.style.width = getRandomSize();
+    div.style.top = Math.random() * doc.documentElement.clientHeight + 'px';
+    div.style.left = Math.random() * doc.documentElement.clientWidth + 'px';
+    div.style.background = getRandomColor();
+
+    return div;
 }
 
 /*
@@ -38,11 +60,35 @@ function createDiv() {
    addListeners(newDiv);
  */
 function addListeners(target) {
+    var doc = document;
+    target.addEventListener('mousedown', function (event) {
+        target.ondragstart = function () {
+            return false;
+        };
+
+        var shiftX = event.pageX - target.getBoundingClientRect().left;
+        var shiftY = event.pageY - target.getBoundingClientRect().top;
+
+        function shift(event) {
+            target.style.left = event.pageX - shiftX + 'px';
+            target.style.top = event.pageY - shiftY + 'px';
+        }
+        shift(event);
+        target.style.zIndex = 999;
+        doc.addEventListener('mousemove', shift);
+        
+
+        target.addEventListener('mouseup', function () {
+            doc.removeEventListener('mousemove', shift);
+            target.style.zIndex = 'auto';
+        });
+
+    })
 }
 
 let addDivButton = homeworkContainer.querySelector('#addDiv');
 
-addDivButton.addEventListener('click', function() {
+addDivButton.addEventListener('click', function () {
     // создать новый div
     const div = createDiv();
 

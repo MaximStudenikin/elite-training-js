@@ -37,10 +37,10 @@ function createDiv() {
     function getRandomColor() {
         var hex = Math.floor(Math.random() * 0xFFFFFF);
 
-        return "#" + ("000000" + hex.toString(16)).substr(-6);
+        return '#' + ('000000' + hex.toString(16)).substr(-6);
     }
 
-    div.classList.add('dnd');
+    div.classList.add('draggable-div');
     div.style.position = 'fixed';
     div.style.height = getRandomSize();
     div.style.width = getRandomSize();
@@ -61,6 +61,7 @@ function createDiv() {
  */
 function addListeners(target) {
     var doc = document;
+
     target.addEventListener('mousedown', function (event) {
         target.ondragstart = function () {
             return false;
@@ -76,7 +77,6 @@ function addListeners(target) {
         shift(event);
         target.style.zIndex = 999;
         doc.addEventListener('mousemove', shift);
-        
 
         target.addEventListener('mouseup', function () {
             doc.removeEventListener('mousemove', shift);

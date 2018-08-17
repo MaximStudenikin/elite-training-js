@@ -12,7 +12,7 @@ function delayPromise(seconds) {
     return new Promise(function (resolve) {
         setTimeout(function () {
             resolve();
-        }, seconds);
+        }, seconds * 1000);
     })
 }
 
@@ -47,11 +47,17 @@ function loadAndSortTowns() {
             }
 
             orderedCitiesArray.sort((keyPrev, keyNext) => {
-                if (keyPrev.name > keyNext.name) {
-                    return 1
+                if (keyPrev.name < keyNext.name) {
+                    return -1;
                 }
+                if (keyPrev.name > keyNext.name) {
+                    return 1;
+                }
+
+                return 0;
             })
         });
+
         resolve(orderedCitiesArray);
     })
 }

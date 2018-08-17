@@ -38,14 +38,15 @@ const homeworkContainer = document.querySelector('#homework-container');
  */
 function loadTowns() {
     return new Promise(function (resolve, reject) {
-        var sortCitiesArray = [];
         var xhr = new XMLHttpRequest();
+        var sortCitiesArray = [];
 
         xhr.open('GET', 'https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json');
+        xhr.responseType = 'json';
         xhr.send();
         xhr.addEventListener('load', () => {
             if (xhr.status >= 400) {
-                reject();
+                return reject();
             } else {
                 var cities = JSON.parse(xhr.responseText)
 
@@ -64,10 +65,9 @@ function loadTowns() {
                     }
 
                     return 0;
-                });
-
-                return resolve(sortCitiesArray)
+                })
             }
+            resolve(sortCitiesArray)
         })
     })
 }

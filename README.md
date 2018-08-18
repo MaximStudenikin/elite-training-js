@@ -1,20 +1,37 @@
-# Глубокий разбор JS
+* Задание 1:
 
-- Современный стандарт языка. Использование возможностей современного EcmaScript.
+Функция должна возвращать Promise, который должен быть разрешен через указанное количество секунду
 
-- Функции, замыкание, всплытие, объекты, контекст и многое другое.
+* Задание 2:
 
-- Асинхронность. Организация кода при помощи Promise.
+2.1: Функция должна вернуть Promise, который должен быть разрешен с массивом городов в качестве значения<br>
 
-- Взаимодействие с сервером. XMLHttpRequest, Fetch, Websocket.
+2.2: Элементы полученного массива должны быть отсортированы по имени города
 
-- Работа с DOM. Создание интерактивных приложений.
+* Задание 3:
 
-- MV*. Паттерн для Построения расширяемых приложений.
+ Страница должна предварительно загрузить список городов из
+ https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json
+ и отсортировать в алфавитном порядке.
 
-- ООП в JavaScript. Классы и прототипное наследование.
+ При вводе в текстовое поле, под ним должен появляться список тех городов,
+ в названии которых, хотя бы частично, есть введенное значение.
+ Регистр символов учитываться не должен, то есть "Moscow" и "moscow" - одинаковые названия.
 
-- Тестирование кода. Основы тестирования JS-кода.
+ Во время загрузки городов, на странице должна быть надпись "Загрузка..."
+ После окончания загрузки городов, надпись исчезает и появляется текстовое поле.
+
+ Разметку смотрите в файле towns-content.hbs
+
+```
+ Запрещено использовать сторонние библиотеки. Разрешено пользоваться только тем, что встроено в браузер
+```
+
+### Задание повышенной сложности
+ Если загрузка городов не удалась (например, отключился интернет или сервер вернул ошибку),
+ то необходимо показать надпись "Не удалось загрузить города" и кнопку "Повторить".
+ При клике на кнопку, процесс загруки повторяется заново
+
 
 ## NPM cmd
 ```
@@ -25,14 +42,3 @@ $ npm run codestyle // проверить стиль кода
 $ npm run start // запустить встроенный сервер и следить за изменениями файлов
 $ npm run build // собрать проект в папку 'build'
 ```
-
-### Branch
-
-| Name | git cmd |
-| ------ | ------ |
-| [Task 1](https://github.com/MaximStudenikin/elite-training-js/tree/task-1) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-1 ``` |
-| [Task 2](https://github.com/MaximStudenikin/elite-training-js/tree/task-2) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-2 ``` |
-| [Task 3](https://github.com/MaximStudenikin/elite-training-js/tree/task-3) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-3 ``` |
-| [Task 4](https://github.com/MaximStudenikin/elite-training-js/tree/task-4) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-4 ``` |
-| [Task 5](https://github.com/MaximStudenikin/elite-training-js/tree/task-5) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-6 ``` |
-| [Task 6](https://github.com/MaximStudenikin/elite-training-js/tree/task-5) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-6 ``` |

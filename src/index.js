@@ -30,35 +30,38 @@ function delayPromise(seconds) {
    loadAndSortTowns().then(towns => console.log(towns)) // должна вывести в консоль отсортированный массив городов
  */
 function loadAndSortTowns() {
-    return new Promise(function (resolve) {
+    return new Promise(function (resolve, reject) {
         var xhr = new XMLHttpRequest();
-        var orderedCitiesArray = [];
+        var sortCitiesArray = [];
 
         xhr.open('GET', 'https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json');
         xhr.responseType = 'json';
         xhr.send();
         xhr.addEventListener('load', () => {
-            var cities = xhr.response;
+            if (xhr.status >= 400) {
+                return reject();
+            } else {
+                var cities = JSON.parse(xhr.responseText)
 
-            for (var townsKey in cities) {
-                if (Object.prototype.hasOwnProperty.call(cities, townsKey)) {
-                    orderedCitiesArray.push(cities[townsKey])
+                for (var townsKey in cities) {
+                    if (Object.prototype.hasOwnProperty.call(cities, townsKey)) {
+                        sortCitiesArray.push(cities[townsKey])
+                    }
                 }
+
+                sortCitiesArray.sort(function (keyPrev, keyNext) {
+                    if (keyPrev.name < keyNext.name) {
+                        return -1;
+                    }
+                    if (keyPrev.name > keyNext.name) {
+                        return 1;
+                    }
+
+                    return 0;
+                })
             }
-
-            orderedCitiesArray.sort((keyPrev, keyNext) => {
-                if (keyPrev.name < keyNext.name) {
-                    return -1;
-                }
-                if (keyPrev.name > keyNext.name) {
-                    return 1;
-                }
-
-                return 0;
-            })
-        });
-
-        resolve(orderedCitiesArray);
+            resolve(sortCitiesArray)
+        })
     })
 }
 

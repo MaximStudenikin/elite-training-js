@@ -1,22 +1,34 @@
-# Глубокий разбор JS
+# Task Week ?... (I'm lost in time)
 
-- Современный стандарт языка. Использование возможностей современного EcmaScript.
+ДЗ 7 - Создать редактор cookie с возможностью фильтрации<br>
 
-- Функции, замыкание, всплытие, объекты, контекст и многое другое.
+ 7.1: На странице должна быть таблица со списком имеющихся cookie. Таблица должна иметь следующие столбцы:
+   - имя
+   - значение
+   - удалить (при нажатии на кнопку, выбранная cookie удаляется из браузера и таблицы)
 
-- Асинхронность. Организация кода при помощи Promise.
+ 7.2: На странице должна быть форма для добавления новой cookie. Форма должна содержать следующие поля:<br>
+   - имя
+   - значение
+   - добавить (при нажатии на кнопку, в браузер и таблицу добавляется новая cookie с указанным именем и значением)
+```
+ Если добавляется cookie с именем уже существующией cookie, то ее значение в браузере и таблице должно быть обновлено
+```
 
-- Взаимодействие с сервером. XMLHttpRequest, Fetch, Websocket.
+ 7.3:
+ - На странице должно быть текстовое поле для фильтрации cookie
+ - В таблице должны быть только те cookie, в имени или значении которых, хотя бы частично, есть введенное значение
+ - Если в поле фильтра пусто, то должны выводиться все доступные cookie
+ - Если дабавляемая cookie не соответсвуте фильтру, то она должна быть добавлена только в браузер, но не в таблицу
+ - Если добавляется cookie, с именем уже существующией cookie и ее новое значение не соответствует фильтру,
+ то ее значение должно быть обновлено в браузере, а из таблицы cookie должна быть удалена
 
-- Работа с DOM. Создание интерактивных приложений.
-
-- MV*. Паттерн для Построения расширяемых приложений.
-
-- ООП в JavaScript. Классы и прототипное наследование.
-
-- Тестирование кода. Основы тестирования JS-кода.
+```
+ Запрещено использовать сторонние библиотеки. Разрешено пользоваться только тем, что встроено в браузер
+```
 
 ## NPM cmd
+
 ```
 $ npm install // установить зависимости
 $ npm run prepare // запустить тесты и проверить стиль кода
@@ -25,14 +37,3 @@ $ npm run codestyle // проверить стиль кода
 $ npm run start // запустить встроенный сервер и следить за изменениями файлов
 $ npm run build // собрать проект в папку 'build'
 ```
-
-### Branch
-
-| Name | git cmd |
-| ------ | ------ |
-| [Task 1](https://github.com/MaximStudenikin/elite-training-js/tree/task-1) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-1 ``` |
-| [Task 2](https://github.com/MaximStudenikin/elite-training-js/tree/task-2) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-2 ``` |
-| [Task 3](https://github.com/MaximStudenikin/elite-training-js/tree/task-3) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-3 ``` |
-| [Task 4](https://github.com/MaximStudenikin/elite-training-js/tree/task-4) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-4 ``` |
-| [Task 5](https://github.com/MaximStudenikin/elite-training-js/tree/task-5) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-6 ``` |
-| [Task 6](https://github.com/MaximStudenikin/elite-training-js/tree/task-5) | ```$ git clone https://github.com/MaximStudenikin/elite-training-js.git -b task-6 ``` |

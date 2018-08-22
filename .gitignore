@@ -8,4 +8,4 @@ out/
 dist/
 node_modules/
 coverage/
-source/
+source/*

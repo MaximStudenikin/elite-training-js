@@ -18,7 +18,7 @@ module.exports = {
         cookie: './src/cookie.js'
     },
     devServer: {
-        index: 'cookie.html'
+        index: 'index.html'
     },
     output: {
         filename: '[name].[hash].js',

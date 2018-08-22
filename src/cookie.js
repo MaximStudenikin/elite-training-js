@@ -142,8 +142,6 @@ addButton.addEventListener('click', () => {
     document.cookie = `${cookieName} = ${cookieValue}`;
 
     creatorTable(getCookies());
-    addNameInput.value = '';
-    addValueInput.value = '';
 });
 
 window.onload = creatorTable(getCookies());

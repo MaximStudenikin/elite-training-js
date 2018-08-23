@@ -1,20 +1,6 @@
 // Ипорт стилей
 
-// import '../common.blocks/base.scss';
-// import '../common.blocks/colors.scss';
-// import '../common.blocks/page/page.scss';
-// import '../common.blocks/page/_background.scss';
-// import '../common.blocks/logo/logo.scss';
-// import '../common.blocks/logo/_bottom_line.scss';
-// import '../common.blocks/icon/icon.scss';
-// import '../common.blocks/icon/_view_cross.scss';
-// import '../common.blocks/icon/_view_plus.scss';
-// import '../common.blocks/icon/_color_white.scss';
-// import '../common.blocks/workspace/workspace.scss';
-// import '../common.blocks/workspace/__header.scss';
-// import '../common.blocks/workspace/__search-field.scss';
-// import '../common.blocks/input-search/input-search.scss';
-// import '../common.blocks/input-search/_add_icon.scss';
+import '../common.blocks/index.scss';
 
 
 // ипорт и рендер шаблона с друзьями
@@ -36,7 +22,7 @@ const items = [
 ];
 
 // вывод на страницу
-page.innerHTML = render({items: items});
+// page.innerHTML = render({items: items});
 
 // вызов импортированых функций из dnd
 dnd()

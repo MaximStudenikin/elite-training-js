@@ -58,3 +58,21 @@ img {
   width: 100%;
   max-width: 100%;
 }
+
+$orange: #ff9a61;
+$black: #000;
+$white: #fff;
+
+@import './page/page.scss';
+@import './page/_background.scss';
+@import './logo/logo.scss';
+@import './logo/_bottom_line.scss';
+@import './icon/icon.scss';
+@import './icon/_view_cross.scss';
+@import './icon/_view_plus.scss';
+@import './icon/_color_white.scss';
+@import './workspace/workspace.scss';
+@import './workspace/__block.scss';
+@import './workspace/__block_color_gray.scss';
+@import './input-search/input-search.scss';
+@import './input-search/_add_icon.scss';

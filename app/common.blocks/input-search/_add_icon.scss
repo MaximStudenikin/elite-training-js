@@ -1,3 +1,25 @@
-.input-search_add_icon{
-  
+.input-search_add_icon {
+  position: relative;
+  padding: 0 0 0 27px;
+}
+
+.input-search_add_icon::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  width: 70px;
+  transform: rotate(45deg);
+  border: 12px solid $black;
+}
+
+.input-search_add_icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border: 20px solid $black;
+  border-radius: 100px;
 }

@@ -15,7 +15,7 @@ rules.push({
 
 module.exports = {
     entry: {
-        cookie: './src/cookie.js'
+        index: './app/common.js/index.js'
     },
     devServer: {
         index: 'index.html'
@@ -36,10 +36,10 @@ module.exports = {
         }),
         new ExtractTextPlugin('styles.css'),
         new HtmlPlugin({
-            title: 'Cookies',
-            template: 'cookie.hbs',
-            filename: 'cookie.html',
-            chunks: ['cookie']
+            title: 'FriendsFilter',
+            template: 'index.hbs',
+            filename: 'index.html',
+            chunks: ['index']
         }),
         new CleanWebpackPlugin(['dist'])
     ]

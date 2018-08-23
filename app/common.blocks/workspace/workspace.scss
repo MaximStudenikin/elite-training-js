@@ -1,8 +1,9 @@
 .workspace{
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
+  border-radius: 100px;
   margin: auto;
   width: 620px;
   height: 415px;
+  z-index: 999;
 }

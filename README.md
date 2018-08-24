@@ -1,7 +1,7 @@
 # Задача
 Реализовать приложение которое представляет из себя два списка.
 
-![Макет]:(https://image.prntscr.com/image/RvC9hNfJS5mm99UJtnYFUQ.png)
+![Макет](https://image.prntscr.com/image/RvC9hNfJS5mm99UJtnYFUQ.png)
 
 
 ## Описание

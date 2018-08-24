@@ -1,0 +1,26 @@
+.icon_view_loupe {
+  position: absolute;
+  left: 10px;
+}
+
+.icon_view_loupe::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid $black;
+  border-radius: 100px;
+  transform: translate(30%,-10%);
+}
+
+.icon_view_loupe::before {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 10px;
+  width: 5px;
+  transform: rotate(45deg);
+  border: 1px solid $black;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}

@@ -59,7 +59,7 @@ img {
   max-width: 100%;
 }
 
-$orange: #ff9a61;
+$orange:#ff9a61;
 $black: #000;
 $white: #fff;
 
@@ -70,9 +70,11 @@ $white: #fff;
 @import './icon/icon.scss';
 @import './icon/_view_cross.scss';
 @import './icon/_view_plus.scss';
+@import './icon/_view_loupe.scss';
 @import './icon/_color_white.scss';
 @import './workspace/workspace.scss';
-@import './workspace/__block.scss';
-@import './workspace/__block_color_gray.scss';
+@import './workspace/__block/__block.scss';
+@import './workspace/__block/__block_color_gray.scss';
+@import './workspace/__content/__content.scss';
 @import './input-search/input-search.scss';
 @import './input-search/_add_icon.scss';

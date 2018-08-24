@@ -23,6 +23,8 @@
 Разрешено использовать только чисты JS, шаблонизаторы и VK SDK
 ```
 
+[Demo](https://maximstudenikin.github.io/elite-training-js/)
+
 ### NPM cmd
 
 ```

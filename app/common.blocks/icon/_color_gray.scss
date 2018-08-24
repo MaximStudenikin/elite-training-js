@@ -1,0 +1,6 @@
+.icon_color_gray{
+  &::before,
+  &::after {
+    background: $gray-dark;
+  }
+}

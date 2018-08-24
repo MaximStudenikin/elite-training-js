@@ -60,21 +60,48 @@ img {
 }
 
 $orange:#ff9a61;
-$black: #000;
+$gray-dark:#9f9f9f;
+$gray: #f0f0f0;
 $white: #fff;
+
+@import './text/text.scss';
+@import './text/_color_white.scss';
+@import './text/_size_12.scss';
+@import './text/_weight_bold.scss';
 
 @import './page/page.scss';
 @import './page/_background.scss';
+
 @import './logo/logo.scss';
 @import './logo/_bottom_line.scss';
+
 @import './icon/icon.scss';
 @import './icon/_view_cross.scss';
 @import './icon/_view_plus.scss';
 @import './icon/_view_loupe.scss';
 @import './icon/_color_white.scss';
+@import './icon/_color_gray.scss';
+
+@import './block/block.scss';
+@import './block/_bg_gray.scss';
+
 @import './workspace/workspace.scss';
-@import './workspace/__block/__block.scss';
-@import './workspace/__block/__block_color_gray.scss';
-@import './workspace/__content/__content.scss';
+@import './workspace/__content.scss';
+@import './workspace/__block-footer.scss';
+@import './workspace/__block-header.scss';
+@import './workspace/__list.scss';
+@import './workspace/__list_border_right.scss';
+@import './workspace/__text.scss';
+
 @import './input-search/input-search.scss';
 @import './input-search/_add_icon.scss';
+
+@import './user/user.scss';
+@import './user/__photo.scss';
+@import './user/__text.scss';
+
+@import './scroll/scroll.scss';
+@import './scroll/__item.scss';
+@import './scroll/_hover_gray.scss';
+
+@import './button/button.scss';

@@ -1,0 +1,5 @@
+.scroll__item_hover_gray{
+ &:hover{
+   background: transparentize($gray-dark, 0.5);
+ }
+}

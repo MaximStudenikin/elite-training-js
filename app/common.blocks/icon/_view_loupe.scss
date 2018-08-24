@@ -1,6 +1,6 @@
 .icon_view_loupe {
   position: absolute;
-  left: 10px;
+  left: 16px;
 }
 
 .icon_view_loupe::after {
@@ -8,7 +8,7 @@
   display: block;
   width: 10px;
   height: 10px;
-  border: 1px solid $black;
+  border: 1px solid $gray-dark;
   border-radius: 100px;
   transform: translate(30%,-10%);
 }
@@ -20,7 +20,7 @@
   top: 10px;
   width: 5px;
   transform: rotate(45deg);
-  border: 1px solid $black;
+  border: 1px solid $gray-dark;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }

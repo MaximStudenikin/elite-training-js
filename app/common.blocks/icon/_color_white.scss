@@ -1,3 +1,6 @@
-.icon_color_white{
-  background: $white;
+.icon_color_white {
+  &::before,
+  &::after {
+    background: $white;
+  }
 }

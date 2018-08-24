@@ -1,16 +1,21 @@
 .icon_view_cross {
-  &::before {
-    top: 25px;
-    position: absolute;
-    width: 50px;
-    height: 1px;
-    left: 50px;
-  }
+
+  &:before,
   &:after {
-    top: 25px;
-    left: 50px;
-    width: 50px;
+    content:'';
     position: absolute;
-    height: 1px;
+    display: block;
+    height: 16px;
+    width: 4px;
+    border-radius: 8px;
   }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+  
 }

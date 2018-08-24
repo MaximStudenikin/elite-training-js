@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box; }
+
+html,
+body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.42; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  font-weight: normal; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+ul {
+  padding: 0;
+  margin: 0; }
+
+li {
+  list-style: none; }
+
+p {
+  padding: 0;
+  margin: 0; }
+
+a {
+  text-decoration: none; }
+
+footer {
+  position: relative;
+  width: 100%; }
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%; }
+
+.text {
+  font-size: 16px; }
+
+.text_color_white {
+  color: #fff; }
+
+.text_size_12 {
+  font-size: 12px; }
+
+.text_weight_bold {
+  font-weight: bold; }
+
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%; }
+
+.page_background::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: #9f9f9f;
+  opacity: .4; }
+
+.logo {
+  color: #ff9a61;
+  position: absolute;
+  top: 18%;
+  font-size: 16px;
+  text-transform: lowercase; }
+
+.logo_bottom_line::after {
+  content: '';
+  background-color: #ff9a61;
+  top: 20px;
+  width: 60px;
+  height: 2px; }
+
+.icon {
+  width: 14px;
+  height: 14px; }
+
+.icon_view_cross:before, .icon_view_cross:after {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 16px;
+  width: 4px;
+  border-radius: 8px; }
+
+.icon_view_cross:before {
+  transform: rotate(45deg); }
+
+.icon_view_cross:after {
+  transform: rotate(-45deg); }
+
+.icon_view_plus:before, .icon_view_plus:after {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 16px;
+  width: 4px;
+  border-radius: 8px; }
+
+.icon_view_plus:before {
+  transform: rotate(0deg); }
+
+.icon_view_plus:after {
+  transform: rotate(-90deg); }
+
+.icon_view_loupe {
+  position: absolute;
+  left: 16px; }
+
+.icon_view_loupe::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #9f9f9f;
+  border-radius: 100px;
+  transform: translate(30%, -10%); }
+
+.icon_view_loupe::before {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 10px;
+  width: 5px;
+  transform: rotate(45deg);
+  border: 1px solid #9f9f9f;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px; }
+
+.icon_color_white::before, .icon_color_white::after {
+  background: #fff; }
+
+.icon_color_gray::before, .icon_color_gray::after {
+  background: #9f9f9f; }
+
+.block {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  padding: 0 14px; }
+
+.block_bg_gray {
+  background: #f0f0f0; }
+
+.workspace {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  margin: auto;
+  width: 620px;
+  height: 415px;
+  z-index: 999;
+  overflow: hidden; }
+
+.workspace__content {
+  display: flex;
+  justify-content: space-around;
+  height: 360px;
+  background: #fff;
+  overflow: hidden; }
+
+.workspace__block-footer {
+  justify-content: flex-end; }
+
+.workspace__block-header {
+  background: #ff9a61; }
+
+.workspace__list {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 0 14px; }
+
+.workspace__list_border_right {
+  border-right: 1px solid #9f9f9f; }
+
+.workspace__text {
+  margin: 7px 0 0 0; }
+
+.input-search {
+  font-size: 12px;
+  padding: 0 14px;
+  width: 285px;
+  height: 25px;
+  border-radius: 100px;
+  color: #9f9f9f;
+  border: 0; }
+
+.input-search_add_icon {
+  padding: 0 0 0 27px; }
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%; }
+
+.user__photo {
+  width: 45px;
+  height: 45px;
+  border-radius: 100px;
+  overflow: hidden; }
+
+.user__text {
+  padding: 0 0 0 7px; }
+
+.scroll {
+  margin: 7px 0 0 0;
+  border-top: 1px solid #9f9f9f;
+  overflow: auto; }
+
+.scroll__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 7px 0 0 0;
+  padding: 7px 4px;
+  border-top: 1px solid #9f9f9f; }
+  .scroll__item:first-child {
+    border-top: none; }
+
+.scroll__item_hover_gray:hover {
+  background: rgba(159, 159, 159, 0.5); }
+
+.button {
+  font-size: 12px;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: #ff9a61;
+  color: #fff; }
+
+/*# sourceMappingURL=styles.css.map*/

@@ -94,6 +94,7 @@ img {
   height: 2px; }
 
 .icon {
+  position: relative;
   width: 14px;
   height: 14px; }
 
@@ -216,9 +217,7 @@ img {
 
 .user {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 50%; }
+  align-items: center; }
 
 .user__photo {
   width: 45px;
@@ -227,7 +226,7 @@ img {
   overflow: hidden; }
 
 .user__text {
-  padding: 0 0 0 7px; }
+  padding: 0 0 0 14px; }
 
 .scroll {
   margin: 7px 0 0 0;

@@ -1,51 +1,33 @@
+var doc = document;
+
 // Ипорт стилей
 import '../common.blocks/index.scss';
 
 
 // ипорт и рендер шаблона с друзьями
-// import render from '../common.blocks/scroll/__item.hbs';
+import render from '../common.blocks/scroll/__item.hbs';
 // импорт функций из файла
 // import { dnd, dndIcon } from './dnd/dnd'
-// import { auth } from './friendsVK/friendsVK';
+import { authorization, callAPI } from './vkSDK/vkSDK';
 
-
-
-VK.init({
-  apiId: 6669907
+authorization()
+  .then(function () { console.log('live is good') })
+  .then(function () {
+    return callAPI('users.get', { name_case: 'gen' });
   })
-  
-  function auth() {
-    return Promise((resolve, reject) => {
-      VK.Auth.login(data => {
-        if (data.session) {
-          resolve();
-        } else {
-          reject(new Error('Все плохо'));
-        }
-      }, 2);
-    });
-  }
+  .then(function ([me]) {
+    console.log([me]);
+    const title = doc.querySelector('#headerTitile');
+    title.textContent = `Другофильр: ${me.first_name} ${me.last_name}`;
+  })
+  .then(function () {
+    return callAPI('friends.get', {fields: 'photo_100'});
+  })
+  .then(function (friends) {
+    var scroll = doc.querySelector('.scroll');
 
-  auth().then(() => console.log('live is good'));
-
-
-
-
-
-
-// var doc = document;
-
-// const scroll = doc.querySelector('.scroll');
-
-// // псевдо json
-// const items = [
-//   { name: 'Ivan', last_name: 'Ivanov', photo: 'https://source.unsplash.com/user/chrisjoelcampbell/50x50' },
-//   { name: 'Pert', last_name: 'Pertov', photo: 'https://source.unsplash.com/user/chrisjoelcampbell/50x50' },
-//   { name: 'Garic', last_name: 'Garicov', photo: 'https://source.unsplash.com/user/chrisjoelcampbell/50x50' },
-// ];
-
-// вывод на страницу
-// scroll.innerHTML = render({ items: items });
+    scroll.innerHTML = render(friends.first_name, friends.last_name, friends.photo_100);
+  })
 
 // вызов импортированых функций из dnd
 // dnd()

@@ -1,28 +1,37 @@
-// var inputSearch = homeworkContainer.querySelector('#vk-search');
+import render from '../scroll/__item.hbs';
 
-// function misMatch(key, inputValue) {
-//   if (key.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0) {
-//       return true;
-//   }
+function search(input, list, vkSDK) {
 
-//   return false;
-// }
+  function misMatch(key, inputValue) {
+    if (key.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0) {
+      return true;
+    }
 
-// inputSearch.addEventListener('keyup', function () {
-//   var filterInput = inputSearch.value;
+    return false;
+  }
 
-//   if (!filterInput) {
-//       creatorTable(getCookies());
-//   } else {
-//       var filterList = {};
+  input.addEventListener('keyup', function () {
+    var filterInput = input.value;
 
-//       for (var key in getCookies()) {
-//           if (key) {
-//               if (misMatch(key, filterInput) || misMatch(getCookies()[key], filterInput)) {
-//                   filterList[key] = getCookies()[key];
-//               }
-//           }
-//       }
-//       creatorTable(filterList);
-//   }
-// });
+    if (!filterInput) {
+      render(vkSDK);
+    } else {
+      var filterList = {};
+
+      for (var key in vkSDK) {
+        if (key) {
+          if (misMatch(key, filterInput) || misMatch(vkSDK[key], filterInput)) {
+            filterList[key] = vkSDK[key];
+          }
+        }
+      }
+      var filterFriends = render(filterList);
+      list.innerHTML = filterFriends;
+    }
+  });
+
+}
+
+export {
+  search
+}

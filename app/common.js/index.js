@@ -9,6 +9,7 @@ import render from '../common.blocks/scroll/__item.hbs';
 // импорт функций из файла
 // import { dnd, dndIcon } from './dnd/dnd'
 import { authorization, callAPI } from './vkSDK/vkSDK';
+import { VKlocalRepository } from './vkSDK/vklocalStorage';
 
 authorization()
   .then(function () {
@@ -22,10 +23,21 @@ authorization()
     return callAPI('friends.get', {fields: 'photo_100', count: 50});
   })
   .then(function (friends) {
-    scroll = doc.querySelector('#vk-list')
+    var scroll = doc.querySelector('#vk-list');
+
     var friendsHtml = render(friends);
+
     scroll.innerHTML = friendsHtml;
   })
+  .then(function (friends) {
+    var vklist = doc.getElementById('vk-list');
+    var vkSearchInput = doc.getElementById('vk-search');
+  
+    search(vkSearchInput, vklist, friends);
+  })
+ 
+  
+
 
 // вызов импортированых функций из dnd
 // dnd()

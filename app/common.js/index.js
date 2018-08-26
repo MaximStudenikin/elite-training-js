@@ -21,12 +21,17 @@ authorization()
     title.textContent = `Другофильр: ${me.first_name} ${me.last_name}`;
   })
   .then(function () {
-    return callAPI('friends.get', {fields: 'photo_100'});
+    return callAPI('friends.get', {fields: 'country, city, photo_100'});
   })
   .then(function (friends) {
-    var scroll = doc.querySelector('.scroll');
+   console.log(friends)
+  })
+  .then(function (friends) {
+    var scroll = doc.querySelector('#vk-list__item')
+    console.log(scroll)
+    var friendsHtml = render(friends);
 
-    scroll.innerHTML = render(friends.first_name, friends.last_name, friends.photo_100);
+    scroll.innterHtml = friendsHtml;
   })
 
 // вызов импортированых функций из dnd

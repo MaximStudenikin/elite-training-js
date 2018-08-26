@@ -11,27 +11,20 @@ import render from '../common.blocks/scroll/__item.hbs';
 import { authorization, callAPI } from './vkSDK/vkSDK';
 
 authorization()
-  .then(function () { console.log('live is good') })
   .then(function () {
     return callAPI('users.get', { name_case: 'gen' });
   })
   .then(function ([me]) {
-    console.log([me]);
     const title = doc.querySelector('#headerTitile');
     title.textContent = `Другофильр: ${me.first_name} ${me.last_name}`;
   })
   .then(function () {
-    return callAPI('friends.get', {fields: 'country, city, photo_100'});
+    return callAPI('friends.get', {fields: 'photo_100', count: 50});
   })
   .then(function (friends) {
-   console.log(friends)
-  })
-  .then(function (friends) {
-    var scroll = doc.querySelector('#vk-list__item')
-    console.log(scroll)
+    scroll = doc.querySelector('#vk-list')
     var friendsHtml = render(friends);
-
-    scroll.innterHtml = friendsHtml;
+    scroll.innerHTML = friendsHtml;
   })
 
 // вызов импортированых функций из dnd

@@ -35,7 +35,7 @@ function loadAndSortTowns() {
         var sortCitiesArray = [];
 
         xhr.open('GET', 'https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json');
-        xhr.responseType = 'json';
+        xhr.responseType = 'text';
         xhr.send();
         xhr.addEventListener('load', () => {
             if (xhr.status >= 400) {

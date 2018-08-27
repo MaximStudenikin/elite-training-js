@@ -46,8 +46,8 @@ function friendFilter(friends, filter) {
 
 function friendRemove(friends, filter) {
   myMass.response = friends.response.filter(function (array, index) {
-    if (arr.photo_100 === filter) {
-      myFriends.response.push(array);
+    if (array.photo_100 == filter) {
+      myMass.response.push(array);
       return false;
     }
     return true

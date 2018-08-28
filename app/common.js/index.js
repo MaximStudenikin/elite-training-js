@@ -1,28 +1,61 @@
 // Ипорт стилей
 import '../common.blocks/index.scss';
 
+VK.init({
+  apiId: 6669907
+});
+
+function auth() {
+  return new Promise((resolve, reject) => {
+    VK.Auth.login(data => {
+      if (data.session) {
+        resolve(data.session);
+      } else {
+        reject(new Error('Не удалось авторизоваться'));
+      }
+    }, 2);
+  });
+}
+
+function callAPI(method, params) {
+  params.v = '5.76';
+
+  return new Promise(function (resolve, reject) {
+    VK.api(method, params, function (data) {
+      if (data.error) {
+        reject(data.error);
+      } else {
+        resolve(data.response);
+      }
+    });
+  });
+}
+
 var doc = document;
+var localRepo = localStorage;
 
-var vkMass = {
-  response: []
-};
-var myMass = {
-  response: []
-};
+var leftMass = [];
+var rightMass = [];
 
-var vkSearchInput = doc.querySelector('#vk-search');
-var mySearchInput = doc.querySelector('#my-search');
+var leftSearchInput = doc.querySelector('#vk-search');
+var rightSearchInput = doc.querySelector('#my-search');
 
-var vkList = doc.querySelector('#vk-list');
-var myList = doc.querySelector('#my-list');
-
-var friendsInput;
+var leftList = doc.querySelector('#vk-list');
+var rightList = doc.querySelector('#my-list');
 
 var cliar = doc.querySelector('#cliar');
 var saveButtom = doc.querySelector('#save');
 
+function saveToStorage(strArray, array) { //strArray это storage.array
+  strArray = JSON.stringify(array);
+}
+
+function readFromStorage(array, strArray) {
+  array = JSON.parse(strArray); //strArray это storage.array
+}
+
 function showFriends(data, contain, input) {
-  vkSearchInput = input;
+  leftSearchInput = input;
   if (input.value) {
     var filteredFriends = {
       response: []
@@ -35,9 +68,9 @@ function showFriends(data, contain, input) {
 }
 
 function friendFilter(friends, filter) {
-  myMass.response = friends.response.filter(function (array) {
-    if (arr.photo_100 === filter) {
-      vkMass.response.push(array);
+  rightMass.response = friends.response.filter(function (array) {
+    if (array.photo_100 === filter) {
+      leftMass.response.push(array);
       return false;
     }
     return true
@@ -45,9 +78,9 @@ function friendFilter(friends, filter) {
 }
 
 function friendRemove(friends, filter) {
-  myMass.response = friends.response.filter(function (array, index) {
+  rightMass.response = friends.response.filter(function (array, index) {
     if (array.photo_100 == filter) {
-      myMass.response.push(array);
+      rightMass.response.push(array);
       return false;
     }
     return true
@@ -63,104 +96,64 @@ function filterSort(data) {
   return true;
 }
 
-function createTemplate(data, contain) {
-  var source = vkListItem.innerHTML;
-  var templateFn = Handlebars.compile(source);
-  var template = templateFn({
-    list: data.response
-  });
+function createTemplate(array) {
+  var template = require('./__item.hbs');
 
-  contain.innerHTML = template;
+  this.leftSideElement.innerHTML = template({
+    items: array
+  });
 }
 
-new Promise(function (resolve) {
-  if(document.readyState == 'complete') {
-      resolve();
-  } else {
-      window.onload = resolve;
-  }
-}).then(function () {
-  return new Promise(function (resolve, reject) {
-      VK.init({
-          apiId: 6669907
-      });
+auth()
+  .then(function () {
+    return callAPI('friends.get', { fields: 'photo_100' });
+  }).then(function (friends) {
 
-      VK.Auth.login(function(response) {
-          if(response.session) {
-              resolve(response);
-          } else {
-              reject(new Error('Не удалось подключение'));
-          }
-      }, 2);
-  });
-}).then(function () {
-  return new Promise(function (resolve, reject) {
-      VK.api('friends.get', {'fields': 'photo_100'}, function (data) {
-          if(data.error) {
-              reject (new Error('Все плохо'));
-          } else {
-              resolve(data);
-          }
-      });
-  });
-}).then(function (data) {
-    if (localStorage.length > 0) {
-      vkMass = JSON.parse(localStorage.fields);
-    }
+    localRepo.VKfriends = JSON.stringify(friends.items);
 
-    myMass = data;
+    createTemplate(leftMass);
+    createTemplate(rightMass);
 
-    if (!vkMass.response[0]) {
-      createTemplate(data, leftContainer);
-    } else {
-      myMass.response = myMass.response.filter(function (index) {
-        !myMass.response.some(function (index2) {
-          index.photo_100 == index2.photo_100
-        });
-      })
-      createTemplate(vkMass, vkList);
-      createTemplate(myMass, myList);
-    }
 
-    vkList.addEventListener('click', function (event) {
+    leftList.addEventListener('click', function (event) {
       if (event.target.classList.contains('add')) {
         var src = event.target.contains('div').firstChild.getAttribute('src');
 
-        friendFilter(vkMass, src);
+        friendFilter(leftMass, src);
 
-        createTemplate(vkMass, vkList);
-        createTemplate(myMass, myList);
+        createTemplate(leftMass, leftList);
+        createTemplate(rightMass, rightList);
 
         friendsInput.value = '';
       }
     })
 
-    myList.addEventListener('click', function (event) {
+    rightList.addEventListener('click', function (event) {
       if (event.target.classList.contains('add')) {
         var src = event.target.contains('div').firstChild.getAttribute('src');
 
-        friendRemove(myMass, src);
+        friendRemove(rightMass, src);
 
-        createTemplate(vkMass, vkList);
-        createTemplate(myMass, myList);
+        createTemplate(leftMass, leftList);
+        createTemplate(rightMass, rightList);
 
         friendsInput.value = '';
       }
     })
 
-    vkSearchInput.addEventListener('input', function () {
-      showFriends(data, vkList, vkSearchInput);
+    leftSearchInput.addEventListener('input', function () {
+      showFriends(data, leftList, leftSearchInput);
     })
 
-    mySearchInput.addEventListener('input', function () {
-      showFriends(myMass, myList, mySearchInput);
+    rightSearchInput.addEventListener('input', function () {
+      showFriends(rightMass, rightList, rightSearchInput);
     });
 
     saveButtom.addEventListener('click', function (event) {
       event.preventDefault();
 
-      if (vkMass.response) {
-        localStorage.fields = JSON.stringify(vkMass)
+      if (leftMass.response) {
+        localStorage.fields = JSON.stringify(leftMass)
       }
     });
 
